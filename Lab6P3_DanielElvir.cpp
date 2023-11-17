@@ -23,6 +23,8 @@ void iniciarJuego() {
 	cout << "Ingrese el nombre del cazador 2" << endl;
 	cin >> nombre2;
 
+	Juego* juego = new Juego(dimension, nombre1, nombre2);
+	juego->iniciarJuego();
 }
 
 void menu() {

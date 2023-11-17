@@ -3,6 +3,7 @@ class Isla{
 	char** matriz;
 	int dimension;
 public:
+	Isla();
 	Isla(int);
 	~Isla();
 	void generarIsla();

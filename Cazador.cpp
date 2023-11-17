@@ -1,6 +1,10 @@
 #include "Cazador.h"
 #include <stdlib.h>
 
+Cazador::Cazador()
+{
+}
+
 Cazador::Cazador(int x, int y, int dimension) {
 	this->posicionX = x;
 	this->posicionY = y;
@@ -21,6 +25,14 @@ int Cazador::getMovimientos() const {
 	return movimientos;
 }
 
+void Cazador::setNombre(char nom) {
+	this->Nombre = nom;
+}
+
+char Cazador::getNombre() {
+	return Nombre;
+}
+
 void Cazador::nuevaPosicion(int x, int y){
 	posicionX = x;
 	posicionY = y;
@@ -36,6 +48,8 @@ void Cazador::dañoRecibido(int dano) {
 void Cazador::movimientosTotales() {
 	this->movimientos--;
 }
+
+
 
 ;
 

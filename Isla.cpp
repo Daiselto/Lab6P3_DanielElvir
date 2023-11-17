@@ -3,6 +3,10 @@
 #include <iostream>
 using namespace std;
 
+Isla::Isla()
+{
+}
+
 Isla::Isla(int dimension){
 	this->dimension = dimension;
 }

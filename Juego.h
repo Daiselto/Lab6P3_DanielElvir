@@ -1,13 +1,23 @@
 #pragma once
 #include "Cazador.h"
 #include "Isla.h"
+#include <string>
+using namespace std;
 class Juego {
 	Cazador Cazador1;
 	Cazador Cazador2;
 	Isla isla;
+	bool turno;
+public:
+	Juego();
+	Juego(int, string, string);
 	void iniciarJuego();
-	void activarTrampa();
+	bool posicionValida(int, int);
+	void activarTrampa(Cazador& cazador);
+	void interactuar(Cazador& cazador);
 	Cazador& cazadorTurno();
+	void mostrarJuego(Isla&, Cazador&, Cazador&);
+	void mover(int);
 
 };
 
