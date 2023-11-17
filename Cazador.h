@@ -1,5 +1,9 @@
 #pragma once
-class Cazador
-{
+class Cazador{
+	int posicionX;
+	int posicionY;
+	int vida;
+	int movimientos;
+	char Nombre;
 };
 
