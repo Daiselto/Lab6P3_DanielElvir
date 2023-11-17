@@ -10,6 +10,7 @@ void iniciarJuego() {
 	cout << "Bienvenido a una nueva partida" << endl;
 	cout << "Ingrese el tamaño de la isla (Tiene que ser mayor de 10)" << endl;
 	cin >> dimension;
+	
 	while (dimension<10) {
 		cout << "La isla tiene que ser mayor de 10" << endl;
 		cout << "Ingrese el tamaño de la isla (Tiene que ser mayor de 10)" << endl;
@@ -34,8 +35,8 @@ void menu() {
 		cout << "2. Salir del juego" << endl;
 		cout << "Escoja una opción valida" << endl;
 		cin >> opcion;
-		switch (opcion)
-		{
+		switch (opcion) {
+		
 		case 1:
 			iniciarJuego();
 			break;
@@ -48,6 +49,7 @@ void menu() {
 		default:
 			cout << "ERROR" << endl;
 			cout << "ESCOJA UNA OPCION VALIDA" << endl;
+			cout << endl;
 			break;
 		}
 	}
