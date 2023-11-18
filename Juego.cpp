@@ -22,6 +22,10 @@ Juego::Juego(int dimension, string nombre1, string nombre2) : isla(dimension), C
 	//isla.mostrarIsla();
 }
 
+Juego::~Juego() {
+	
+}
+
 
 
 void Juego::iniciarJuego(){
@@ -39,13 +43,13 @@ void Juego::iniciarJuego(){
 			cout << "2. Abajo" << endl;
 			cout << "3. Izquierda" << endl;
 			cout << "4. Derecha" << endl;
-			cin >> direccion;				
-			mover(direccion);
+			cin >> direccion;							
 			int x = cazadorActual.getPosicionX();
 			int y = cazadorActual.getPosicionY();
 			char posicionActual = isla.getMatriz()[x][y];
-
+			cout << posicionActual << endl;
 			interactuar(posicionActual);
+			mover(direccion);
 			//mostrarJuego(isla, Cazador1, Cazador2);
 			turno = 3 - turno; 
 			if (Cazador1.getMovimientos() <= 0 && Cazador2.getMovimientos() <= 0) {
@@ -111,20 +115,21 @@ void Juego::mover(int direccion) {
 	Cazador& cazadorActual = cazadorTurno();
 	int nueva_pos_x = cazadorActual.getPosicionX();
 	int nueva_pos_y = cazadorActual.getPosicionY();
+	char posicionActual = isla.getMatriz()[nueva_pos_x][nueva_pos_y];
 
 	isla.getMatriz()[nueva_pos_x][nueva_pos_y] = '-';
 
 	switch (direccion) {
-	case 1:  
+	case 1:
 		nueva_pos_x--;
 		break;
-	case 2:  
+	case 2:
 		nueva_pos_x++;
 		break;
-	case 3:  
+	case 3:
 		nueva_pos_y--;
 		break;
-	case 4:  
+	case 4:
 		nueva_pos_y++;
 		break;
 	default:
@@ -133,9 +138,17 @@ void Juego::mover(int direccion) {
 	}
 
 	if (posicionValida(nueva_pos_x, nueva_pos_y)) {
-		cazadorActual.nuevaPosicion(nueva_pos_x, nueva_pos_y);
-		isla.getMatriz()[nueva_pos_x][nueva_pos_y] = cazadorActual.getNombre();
-		cazadorActual.movimientosTotales();
+		char posicionNueva = isla.getMatriz()[nueva_pos_x][nueva_pos_y];
+
+		if (posicionNueva == '#') {
+			activarTrampa(cazadorActual);
+			isla.getMatriz()[nueva_pos_x][nueva_pos_y] = '#'; 
+		}
+		else {
+			cazadorActual.nuevaPosicion(nueva_pos_x, nueva_pos_y);
+			isla.getMatriz()[nueva_pos_x][nueva_pos_y] = cazadorActual.getNombre();
+			cazadorActual.movimientosTotales();
+		}
 	}
 	else {
 		cout << "Movimiento inválido. No se puede salir de los límites de la isla.\n";

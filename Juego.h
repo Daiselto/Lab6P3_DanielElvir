@@ -11,6 +11,7 @@ class Juego {
 public:
 	Juego();
 	Juego(int, string, string);
+	~Juego();
 	void iniciarJuego();
 	bool posicionValida(int, int);
 	void activarTrampa(Cazador& cazador);

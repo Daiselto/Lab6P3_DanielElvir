@@ -25,6 +25,7 @@ void iniciarJuego() {
 
 	Juego* juego = new Juego(dimension, nombre1, nombre2);
 	juego->iniciarJuego();
+	delete juego;
 }
 
 void menu() {
